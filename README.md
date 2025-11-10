@@ -1,85 +1,108 @@
-# 🚀 StudyNotion: The MERN Stack Ed-Tech Platform
+# 💻 StudyNotion Frontend
 
-## 🌟 Empower Your Future with Coding Skills
+## 🚀 Overview
 
-StudyNotion is a fully functional, versatile, and intuitive educational technology (ed-tech) platform that enables users to create, consume, and rate educational content. Built with the **MERN Stack** (**ReactJS**, **NodeJS**, **MongoDB**, and **ExpressJS**), it offers a seamless and interactive learning experience for students while providing a robust global platform for instructors to share their expertise.
+**StudyNotion-Frontend** is the dynamic, responsive, and feature-rich client application for the **StudyNotion EdTech Platform**. It delivers a seamless learning and teaching experience, allowing users to browse courses, enroll, consume content, and manage their profiles.
 
----
-
-## ✨ Key Features
-
-### For Students 🧑‍💻
-
-- **Intuitive Course Catalog:** Users can find a list of all available courses, along with descriptions and ratings.
-- **Seamless Enrollment:** Course purchase is completed via a checkout flow that includes **Razorpay** integration for payment handling.
-- **Personalized Learning:** View and access course content, including videos and other related material.
-- **Wishlist & Ratings:** Students can add courses to their wishlist and view and rate courses.
-
-### For Instructors 🧑‍🏫
-
-- **Full Course Management (CRUD):** Instructors can create, read, update, and delete courses, as well as manage course content and media.
-- **Performance Insights:** View detailed insights into their courses, including the number of views and clicks.
-- **Dashboard:** Provides an overview of the instructor's courses, along with ratings and feedback for each course.
-- **Profile Management:** Instructors can view and edit their account details.
-
-### Core Technology ⚙️
-
-- **Cloud-Based Media:** Uses **Cloudinary** for storing and managing all media content, including images, videos, and documents.
-- **Authentication & Security:** Uses **JWT** (JSON Web Tokens) for authentication/authorization and **Bcrypt** for password hashing.
-- **User Verification:** Supports OTP (One-Time Password) verification and forgot password functionality.
-- **Architecture:** Follows a monolithic architecture using Node.js and Express.js.
+Built on the **MERN Stack**'s client side, this application utilizes **ReactJS** for the UI, **Redux** for state management, and **Tailwind CSS** for a modern, utility-first design approach. It communicates with the dedicated [StudyNotion-Backend](https://github.com/ChinmayKaitade/StudyNotion-Backend) via REST APIs.
 
 ---
 
-## 🛠️ Tech Stack
+## 🏗️ Tech Stack
 
-| Area                 | Technology             | Specific Tool/Library                                      |
-| :------------------- | :--------------------- | :--------------------------------------------------------- |
-| **Frontend**         | **ReactJS**            | Primary library for user interfaces.                       |
-| **Styling**          | **CSS & Tailwind**     | Styling frameworks for a good, responsive UI.              |
-| **State Management** | **Redux**              | Used to manage the state of the application.               |
-| **Backend**          | **NodeJS & ExpressJS** | Frameworks for building scalable server-side applications. |
-| **Database**         | **MongoDB & Mongoose** | NoSQL database for flexible data storage.                  |
-| **API Style**        | **RESTful API**        | Communication between front-end and back-end.              |
+| Technology           | Description                                                                                                 |
+| :------------------- | :---------------------------------------------------------------------------------------------------------- |
+| ⚛️ **ReactJS**       | Primary library for building the Single-Page Application (SPA) user interfaces.                             |
+| 🔴 **Redux Toolkit** | Centralized state management for complex application data flow and global states (e.g., Auth, Course data). |
+| 🎨 **Tailwind CSS**  | Utility-first CSS framework for rapid, custom, and responsive styling.                                      |
+| 🌐 **Axios**         | Promise-based HTTP client for making secure requests to the StudyNotion Backend APIs.                       |
 
 ---
 
-## 🏗️ System Architecture
+## 🧩 Key Features
 
-StudyNotion follows a client-server architecture with three main components:
+This frontend application supports all user roles (Student, Instructor, Admin) with specialized views:
 
-1. **Front-end:** Built with ReactJS and communicates with the back-end using **RESTful API** calls.
-2. **Back-end:** Built with NodeJS and ExpressJS, providing APIs for the front end, and handling logic and data storage.
-3. **Database:** Uses MongoDB for flexible and scalable storage of unstructured and semi-structured data like course content, user data, and other information.
-
----
-
-## 📄 Postman API Documentation
-
-You can explore all available API endpoints, request/response examples, and test the StudyNotion APIs here:
-
-**[StudyNotion Postman API Docs](https://documenter.getpostman.com/view/24441701/2s93kz6REm)**
+✅ **User Authentication & Security:** Secure, responsive UI for Signup, Login, OTP verification, and Forgot Password flows.
+✅ **Interactive Dashboards:** Custom user dashboards tailored for **Students** (My Courses, Profile) and **Instructors** (Course Insights, Management).
+✅ **Comprehensive Course Catalog:** Filterable, searchable catalog and detailed course viewing pages displaying ratings and reviews.
+✅ **Seamless Enrollment & Payment:** Guided checkout process featuring a clean UI and integration with the **Razorpay** payment gateway API.
+✅ **Full CRUD for Instructors:** Dedicated interfaces for creating, updating, and managing course content (lectures, sections, media).
+✅ **Media Integration:** Beautiful display of videos and images, utilizing content served from **Cloudinary**.
 
 ---
 
-## 💡 Future Enhancements (Roadmap)
+## 📁 Folder Structure
 
-| Enhancement                          | Priority       | Improvement                                                                   |
-| :----------------------------------- | :------------- | :---------------------------------------------------------------------------- |
-| **Personalized Learning Paths**      | High           | Increases student satisfaction and success.                                   |
-| **Mobile App**                       | High           | Allows for more convenient access and increases the platform's reach.         |
-| **Machine Learning Recommendations** | Medium to High | Improves student engagement and satisfaction.                                 |
-| **Gamification Features**            | Medium         | Increases user engagement and motivation with badges and leaderboards.        |
-| **Social Learning Features**         | Medium         | Increases student engagement via group discussions and peer-to-peer feedback. |
-| **VR/AR Integration**                | Low to Medium  | Enhances the learning experience and makes it more immersive.                 |
+
+StudyNotion-Frontend/
+│
+├── public/ \# Static assets and index.html
+├── src/
+│ ├── components/ \# Reusable UI components (e.g., Buttons, Cards, Modals)
+│ ├── pages/ \# Main application views (e.g., Home, Login, Dashboard)
+│ ├── services/ \# Logic for API calls (Interacting with Backend)
+│ ├── slices/ \# Redux state slices for Auth, Cart, Courses, etc.
+│ ├── assets/ \# Images, fonts, and icons
+│ ├── styles/ \# Global CSS and Tailwind configurations
+│ └── App.js \# Root component
+├── package.json \# Dependencies and scripts
+└── tailwind.config.js \# Custom Tailwind CSS configuration
+
+
 
 ---
 
-## 🌐 Deployment & Hosting
+## ⚙️ Installation & Setup
 
-The application is deployed across various cloud-based services for scalability, security, and reliability:
+Follow these steps to get the StudyNotion Frontend running on your local machine 👇
 
-- **Front-end:** Deployed using **Vercel**
-- **Back-end:** Hosted on **Render** or **Railway**
-- **Media Files:** Hosted on **Cloudinary**
-- **Database:** Hosted on **MongoDB Atlas**
+### 1️⃣ Clone the repository
+
+```bash
+git clone [https://github.com/ChinmayKaitade/StudyNotion-Frontend](https://github.com/ChinmayKaitade/StudyNotion-Frontend)
+cd StudyNotion-Frontend
+```
+
+### 2️⃣ Install dependencies
+
+```bash
+npm install
+```
+
+### 3️⃣ Create a `.env` file
+
+Create a `.env.local` file in the root directory and add the environment variables for the backend connection.
+
+```
+# Replace with your StudyNotion-Backend URL
+REACT_APP_BASE_URL=http://localhost:4000/api/v1
+```
+
+### 4️⃣ Start the application
+
+```bash
+npm start
+```
+
+The application will start on 👉 **[http://localhost:3000](https://www.google.com/search?q=http://localhost:3000)**
+
+---
+
+## 🌐 Live Demo
+
+_Coming Soon\! A link to the live deployment will be added here._
+
+---
+
+## 🤝 Contributing
+
+Contributions are welcome\! If you'd like to improve the UI/UX or add new features, please feel free to **fork** the repository and submit a **pull request**. 🙌
+
+---
+
+## 🧑‍💻 Author
+
+**Chinmay Kaitade**
+💼 _Full Stack Developer | MERN Stack Enthusiast_
+🔗 [GitHub](https://github.com/ChinmayKaitade) | [LinkedIn](https://linkedin.com/in/chinmay-sharad-kaitade)
