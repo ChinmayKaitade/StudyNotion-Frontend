@@ -8,6 +8,11 @@ const Dashboard = () => {
   const { loading: authLoading } = useSelector((state) => state.auth);
   const { loading: profileLoading } = useSelector((state) => state.profile);
 
+  // ✅ Always call hooks before any conditional return
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   if (profileLoading || authLoading) {
     return (
       <div className="mt-10">
@@ -15,17 +20,12 @@ const Dashboard = () => {
       </div>
     );
   }
-  // Scroll to the top of the page when the component mounts
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
 
   return (
-    <div className="relative flex min-h-[calc(100vh-3.5rem)] ">
+    <div className="relative flex min-h-[calc(100vh-3.5rem)]">
       <Sidebar />
-
-      <div className="h-[calc(100vh-3.5rem)] overflow-auto w-full">
-        <div className=" p-10 ">
+      <div className="h-[calc(100vh-3.5rem)] w-full overflow-auto">
+        <div className="p-10">
           <Outlet />
         </div>
       </div>

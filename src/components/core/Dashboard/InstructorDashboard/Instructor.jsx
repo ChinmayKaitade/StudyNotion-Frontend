@@ -170,7 +170,7 @@ export default function Instructor() {
                       {course.courseName}
                     </p>
 
-                    <div className="flex items-center text-xs text-richblack-300 justify-between">
+                    <div className="flex items-center text-xs text-richblack-300 gap-2">
                       <span>{course.studentsEnrolled.length} students</span>
                       <span>|</span>
                       <span>Rs. {course.price}</span>

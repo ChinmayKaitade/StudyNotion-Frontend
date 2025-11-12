@@ -48,8 +48,6 @@ const randomImges = [
   backgroundImg111,
 ];
 
-// hardcoded
-
 const Home = () => {
   // get background random images
   const [backgroundImg, setBackgroundImg] = useState(null);
@@ -63,7 +61,7 @@ const Home = () => {
 
   // get courses data
   const [CatalogPageData, setCatalogPageData] = useState(null);
-  const categoryID = "6506c9dff191d7ffdb4a3fe2"; // hard coded
+  const categoryID = "6910be0c612c696285c05402"; // hard coded
   const dispatch = useDispatch();
 
   useEffect(() => {
