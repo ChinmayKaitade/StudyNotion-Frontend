@@ -1,6 +1,6 @@
-import React, { useEffect, useState, useMemo } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch } from "react-redux"; // useDispatch used here
 
 import HighlightText from "../components/core/HomePage/HighlightText";
 import CTAButton from "../components/core/HomePage/Button";
@@ -21,7 +21,7 @@ import { FaArrowRight } from "react-icons/fa";
 import { motion } from "framer-motion";
 import { fadeIn } from "../components/common/MotionFrameVariants";
 
-// Background random images imports
+// background random images
 import backgroundImg1 from "../assets/Images/random bg img/coding bg1.jpg";
 import backgroundImg2 from "../assets/Images/random bg img/coding bg2.jpg";
 import backgroundImg3 from "../assets/Images/random bg img/coding bg3.jpg";
@@ -34,8 +34,7 @@ import backgroundImg9 from "../assets/Images/random bg img/coding bg9.jpg";
 import backgroundImg10 from "../assets/Images/random bg img/coding bg10.jpg";
 import backgroundImg111 from "../assets/Images/random bg img/coding bg11.jpg";
 
-// Array of background images
-const randomImages = [
+const randomImges = [
   backgroundImg1,
   backgroundImg2,
   backgroundImg3,
@@ -50,64 +49,56 @@ const randomImages = [
 ];
 
 const Home = () => {
-  const dispatch = useDispatch();
-
-  // --- Background Image Logic ---
+  // get background random images
   const [backgroundImg, setBackgroundImg] = useState(null);
 
   useEffect(() => {
-    // Select a random image once on mount
-    const bg = randomImages[Math.floor(Math.random() * randomImages.length)];
+    const bg = randomImges[Math.floor(Math.random() * randomImges.length)];
     setBackgroundImg(bg);
-  }, []); // Empty dependency array: runs only once
+  }, []);
 
-  // --- Catalog Data Fetching ---
-
+  // get courses data
   const [CatalogPageData, setCatalogPageData] = useState(null);
-  // Using useMemo for stable hardcoded ID
-  const categoryID = useMemo(() => "6910be0c612c696285c05402", []);
+  const categoryID = "6910be0c612c696285c05402"; // hard coded
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    // Function to fetch data
     const fetchCatalogPageData = async () => {
-      // Dispatch is necessary here because getCatalogPageData expects it
+      // Uses dispatch
       const result = await getCatalogPageData(categoryID, dispatch);
       setCatalogPageData(result);
     };
-
     if (categoryID) {
       fetchCatalogPageData();
     }
-  }, [categoryID, dispatch]); // FIX: Added dispatch to the dependency array
-
-  // --- Render ---
+  }, [categoryID, dispatch]); // FIX: Added 'dispatch' dependency
 
   return (
     <React.Fragment>
-      {/* Background Random Image Layer */}
+      {/* background random image */}
       <div>
         <div className="w-full h-[450px] md:h-[650px] absolute top-0 left-0 opacity-[0.3] overflow-hidden object-cover ">
           <img
             src={backgroundImg}
-            alt="Coding background"
+            alt="Background coding pattern"
             className="w-full h-full object-cover "
           />
+
           <div className="absolute left-0 bottom-0 w-full h-[250px] opacity_layer_bg "></div>
         </div>
       </div>
 
       <div className=" ">
-        {/* Section 1: Hero Section */}
+        {/*Section1  */}
         <div className="relative h-[450px] md:h-[550px] justify-center mx-auto flex flex-col w-11/12 max-w-maxContent items-center text-white ">
-          {/* Become an Instructor Button */}
           <Link to={"/signup"}>
             <div
               className="z-0 group p-1 mx-auto rounded-full bg-richblack-800 font-bold text-richblack-200
-                                       transition-all duration-200 hover:scale-95 w-fit"
+                                        transition-all duration-200 hover:scale-95 w-fit"
             >
               <div
                 className="flex flex-row items-center gap-2 rounded-full px-10 py-[5px]
-                                     transition-all duration-200 group-hover:bg-richblack-900"
+                              transition-all duration-200 group-hover:bg-richblack-900"
               >
                 <p>Become an Instructor</p>
                 <FaArrowRight />
@@ -115,25 +106,23 @@ const Home = () => {
             </div>
           </Link>
 
-          {/* Heading */}
           <motion.div
             variants={fadeIn("left", 0.1)}
             initial="hidden"
             whileInView={"show"}
             viewport={{ once: false, amount: 0.1 }}
-            className="text-center text-3xl lg:text-4xl font-semibold mt-7"
+            className="text-center text-3xl lg:text-4xl font-semibold mt-7  "
           >
             Empower Your Future with
             <HighlightText text={"Coding Skills"} />
           </motion.div>
 
-          {/* Subheading */}
           <motion.div
             variants={fadeIn("right", 0.1)}
             initial="hidden"
             whileInView={"show"}
             viewport={{ once: false, amount: 0.1 }}
-            className="mt-4 w-[90%] text-center text-base lg:text-lg font-bold text-richblack-300"
+            className=" mt-4 w-[90%] text-center text-base lg:text-lg font-bold text-richblack-300"
           >
             With our online coding courses, you can learn at your own pace, from
             anywhere in the world, and get access to a wealth of resources,
@@ -141,21 +130,21 @@ const Home = () => {
             instructors.
           </motion.div>
 
-          {/* CTA Buttons */}
           <div className="flex flex-row gap-7 mt-8">
             <CTAButton active={true} linkto={"/signup"}>
               Learn More
             </CTAButton>
+
             <CTAButton active={false} linkto={"/login"}>
               Book a Demo
             </CTAButton>
           </div>
         </div>
 
-        {/* Animated Code Blocks and Course Sliders */}
+        {/* animated code */}
         <div className="relative mx-auto flex flex-col w-11/12 max-w-maxContent items-center text-white justify-between">
           {/* Code block 1 */}
-          <div className="mt-20">
+          <div className="">
             <CodeBlocks
               position={"lg:flex-row"}
               heading={
@@ -185,7 +174,7 @@ const Home = () => {
           </div>
 
           {/* Code block 2 */}
-          <div className="mt-20">
+          <div>
             <CodeBlocks
               position={"lg:flex-row-reverse"}
               heading={
@@ -199,12 +188,12 @@ const Home = () => {
               }
               ctabtn1={{
                 btnText: "Continue Lesson",
-                linkto: "/signup", // Changed 'link' to 'linkto' for consistency
+                link: "/signup",
                 active: true,
               }}
               ctabtn2={{
                 btnText: "Learn More",
-                linkto: "/signup", // Changed 'link' to 'linkto' for consistency
+                link: "/signup",
                 active: false,
               }}
               codeColor={"text-white"}
@@ -213,33 +202,30 @@ const Home = () => {
             />
           </div>
 
-          {/* Course Sliders */}
+          {/* course slider */}
           <div className="mx-auto box-content w-full max-w-maxContentTab px- py-12 lg:max-w-maxContent">
-            <h2 className="text-white mb-6 text-3xl font-semibold">
+            <h2 className="text-white mb-6 text-2xl ">
               Popular Picks for You 🏆
             </h2>
-            {/* Added optional chaining (?) for safety */}
             <CourseSlider
               Courses={CatalogPageData?.selectedCategory?.courses}
             />
           </div>
           <div className=" mx-auto box-content w-full max-w-maxContentTab px- py-12 lg:max-w-maxContent">
-            <h2 className="text-white mb-6 text-3xl font-semibold">
+            <h2 className="text-white mb-6 text-2xl ">
               Top Enrollments Today 🔥
             </h2>
-            {/* Added optional chaining (?) for safety */}
             <CourseSlider Courses={CatalogPageData?.mostSellingCourses} />
           </div>
 
           <ExploreMore />
         </div>
 
-        {/* Section 2: Skills and Timeline */}
+        {/*Section 2  */}
         <div className="bg-pure-greys-5 text-richblack-700 ">
-          {/* Background Image/Overlay */}
           <div className="homepage_bg h-[310px]">
             <div className="w-11/12 max-w-maxContent flex flex-col items-center justify-between gap-5 mx-auto">
-              <div className="h-[150px]"></div> {/* Spacer */}
+              <div className="h-[150px]"></div>
               <div className="flex flex-row gap-7 text-white ">
                 <CTAButton active={true} linkto={"/signup"}>
                   <div className="flex items-center gap-3">
@@ -254,7 +240,6 @@ const Home = () => {
             </div>
           </div>
 
-          {/* Skills and Job Demand */}
           <div className="mx-auto w-11/12 max-w-maxContent flex flex-col items-center justify-between gap-7">
             <div className="flex flex-col lg:flex-row gap-5 mb-10 mt-[95px]">
               <div className="text-3xl lg:text-4xl font-semibold w-full lg:w-[45%]">
@@ -264,8 +249,9 @@ const Home = () => {
 
               <div className="flex flex-col gap-10 w-full lg:w-[40%] items-start">
                 <div className="text-[16px]">
-                  The modern StudyNotion dictates its own terms. Today, to be a
-                  competitive specialist requires more than professional skills.
+                  The modern StudyNotion is the dictates its own terms. Today,
+                  to be a competitive specialist requires more than professional
+                  skills.
                 </div>
                 <CTAButton active={true} linkto={"/signup"}>
                   <div>Learn more</div>
@@ -273,14 +259,14 @@ const Home = () => {
               </div>
             </div>
 
-            {/* Leadership/Timeline */}
+            {/* leadership */}
             <TimelineSection />
 
             <LearningLanguageSection />
           </div>
         </div>
 
-        {/* Section 3: Instructor and Reviews */}
+        {/*Section 3 */}
         <div className="mt-14 w-11/12 mx-auto max-w-maxContent flex-col items-center justify-between gap-8 first-letter bg-richblack-900 text-white">
           <InstructorSection />
 
@@ -292,7 +278,7 @@ const Home = () => {
           <ReviewSlider />
         </div>
 
-        {/* Footer */}
+        {/*Footer */}
         <Footer />
       </div>
     </React.Fragment>
